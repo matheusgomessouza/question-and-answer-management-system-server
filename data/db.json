@@ -1,0 +1,123 @@
+{
+  "answers": [
+    {
+      "id": "eb1079f8-2f3c-46f9-8990-fa718369125a",
+      "description": "Strongly Agree (1)",
+      "active": true,
+      "order": 0
+    },
+    {
+      "id": "07d003ec-99d4-4f9c-9aa0-d3cd3b24a3da",
+      "description": "Agree (2)",
+      "active": true,
+      "order": 1
+    },
+    {
+      "id": "e95f99cb-d212-45d9-8d0a-20936c16f892",
+      "description": "Neutral (3)",
+      "active": true,
+      "order": 2
+    },
+    {
+      "id": "61ffa4b6-3bb8-45ac-939e-630000222643",
+      "description": "Disagree (4)",
+      "active": true,
+      "order": 3
+    },
+    {
+      "id": "d3abbac1-8a09-4d70-bc13-827b1743953e",
+      "description": "Strongly Disagree (5)",
+      "active": true,
+      "order": 4
+    },
+    {
+      "id": "e5a6bff9-2197-438f-84fe-46572eec0fbd",
+      "description": "Yes (6)",
+      "active": true,
+      "order": 5
+    },
+    {
+      "id": "96f37e40-13c9-40a3-a9c9-737f700e6965",
+      "description": "No (7)",
+      "active": true,
+      "order": 6
+    },
+    {
+      "id": "5cc82300-8341-42b6-b466-daeaa570964f",
+      "description": "Maybe (8)",
+      "active": true,
+      "order": 7
+    },
+    {
+      "id": "18d33d2a-178b-4776-918e-1a8406b31527",
+      "description": "Not Applicable (9)",
+      "active": true,
+      "order": 8
+    },
+    {
+      "id": "2f7beabf-8d78-4ed8-92d5-6d071fe5fbb9",
+      "description": "Prefer not to answer (10)",
+      "active": true,
+      "order": 9
+    }
+  ],
+  "questions": [
+    {
+      "id": "c0a23175-44da-4a3d-b865-a95b26cfacd3",
+      "description": "How satisfied are you with our service today?",
+      "active": true,
+      "order": 5,
+      "answerIds": [
+        "eb1079f8-2f3c-46f9-8990-fa718369125a",
+        "e5a6bff9-2197-438f-84fe-46572eec0fbd",
+        "2f7beabf-8d78-4ed8-92d5-6d071fe5fbb9"
+      ]
+    },
+    {
+      "id": "bf46c734-e6c5-4a31-b382-e9cde67709e9",
+      "description": "Would you recommend us to a friend?",
+      "active": true,
+      "order": 1,
+      "answerIds": [
+        "18d33d2a-178b-4776-918e-1a8406b31527",
+        "07d003ec-99d4-4f9c-9aa0-d3cd3b24a3da",
+        "d3abbac1-8a09-4d70-bc13-827b1743953e",
+        "eb1079f8-2f3c-46f9-8990-fa718369125a",
+        "61ffa4b6-3bb8-45ac-939e-630000222643"
+      ]
+    },
+    {
+      "id": "b83e77b2-e4ca-48d7-bc87-49a12a776701",
+      "description": "How would you rate the quality of our product?",
+      "active": true,
+      "order": 2,
+      "answerIds": [
+        "d3abbac1-8a09-4d70-bc13-827b1743953e",
+        "18d33d2a-178b-4776-918e-1a8406b31527"
+      ]
+    },
+    {
+      "id": "94b1264f-0362-4fc7-a497-155bdb4c0689",
+      "description": "How easy was it to use our platform?",
+      "active": true,
+      "order": 3,
+      "answerIds": [
+        "eb1079f8-2f3c-46f9-8990-fa718369125a",
+        "61ffa4b6-3bb8-45ac-939e-630000222643",
+        "2f7beabf-8d78-4ed8-92d5-6d071fe5fbb9"
+      ]
+    },
+    {
+      "id": "33cee008-177e-4238-b0c8-6d11229fca94",
+      "description": "How would you rate your overall experience?",
+      "active": true,
+      "order": 4,
+      "answerIds": [
+        "96f37e40-13c9-40a3-a9c9-737f700e6965",
+        "e95f99cb-d212-45d9-8d0a-20936c16f892",
+        "2f7beabf-8d78-4ed8-92d5-6d071fe5fbb9",
+        "d3abbac1-8a09-4d70-bc13-827b1743953e"
+      ]
+    }
+  ]
+}
