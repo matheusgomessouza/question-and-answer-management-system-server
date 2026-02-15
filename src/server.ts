@@ -3,8 +3,8 @@ import cors from 'cors'
 import { database } from './storage/database.js'
 import { errorHandler } from './middleware/errorHandler.js'
 import { env } from './config/env.js'
-// import questionRoutes from '@/routes/questionRoutes.js'
-// import answerRoutes from '@/routes/answerRoutes.js'
+import questionRoutes from '@/routes/questionRoutes.js'
+import answerRoutes from '@/routes/answerRoutes.js'
 
 const app = express()
 
@@ -15,8 +15,8 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() })
 })
 
-// app.use('/api/questions', questionRoutes)
-// app.use('/api/answers', answerRoutes)
+app.use('/api/questions', questionRoutes)
+app.use('/api/answers', answerRoutes)
 
 app.use(errorHandler)
 
