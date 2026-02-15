@@ -1,5 +1,7 @@
 # Q&A Management Server
 
+![](./assets/swagger-api-docs.jpg)
+
 ## 📋 Objetivo do Projeto
 
 Desenvolver uma **Single Page Application (SPA)** para gerenciamento centralizado de perguntas e respostas. A aplicação proporciona uma experiência completa de CRUD (Create, Read, Update, Delete), permitindo que usuários criem múltiplas perguntas, associem respostas reutilizáveis em relação muitos-para-muitos (ManyToMany), e gerencie todo o ciclo de vida dessas entidades. O projeto é desenvolvido em **Node.js + TypeScript** (mock API backend), sem dependência de banco de dados externo.
