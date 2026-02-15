@@ -1,4 +1,4 @@
-# README.md - Q&A Management SPA
+# Q&A Management Server
 
 ## 📋 Objetivo do Projeto
 
