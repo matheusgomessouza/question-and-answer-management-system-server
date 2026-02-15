@@ -11,8 +11,10 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "lint": "eslint . --ext .ts",
+    "lint:staged": "eslint --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",
-    "seed": "tsx src/storage/seeds.ts"
+    "seed": "tsx src/storage/seeds.ts",
+    "prepare": "husky"
   },
   "keywords": [
     "api",
@@ -44,11 +46,18 @@
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.56.0",
     "husky": "^9.1.7",
+    "lint-staged": "^15.2.0",
     "prettier": "^3.2.5",
     "supertest": "^6.3.4",
     "tsc-alias": "^1.8.8",
     "tsx": "^4.7.1",
     "typescript": "^5.3.3",
     "vitest": "^1.2.2"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
