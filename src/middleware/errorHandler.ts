@@ -11,12 +11,7 @@ export class AppError extends Error {
   }
 }
 
-export const errorHandler = (
-  error: Error,
-  _req: Request,
-  res: Response,
-  _next: NextFunction
-) => {
+export const errorHandler = (error: Error, _req: Request, res: Response, _next: NextFunction) => {
   if (error instanceof AppError) {
     return res.status(error.statusCode).json({
       success: false,
@@ -36,5 +31,6 @@ export const errorHandler = (
   return res.status(500).json({
     success: false,
     message: 'Internal server error',
+    error: error instanceof Error ? error.message : String(error),
   })
 }
