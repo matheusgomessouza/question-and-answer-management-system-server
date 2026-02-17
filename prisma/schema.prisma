@@ -5,8 +5,10 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+  // Remove or comment out this line:
+  // output   = "../generated/prisma" 
 }
 
 datasource db {
@@ -21,13 +23,10 @@ model Answer {
   questions   Question[]
 }
 
-
 model Question {
-  id          String     @id @default(uuid())
+  id          String   @id @default(uuid())
   description String
-  active      Boolean    @default(true)
+  active      Boolean  @default(true)
   order       Int
-  answers     Answer[] 
+  answers     Answer[]
 }
-
-
