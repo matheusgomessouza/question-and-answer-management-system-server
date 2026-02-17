@@ -30,7 +30,7 @@ app.use('/api/answers', answerRoutes)
 
 app.use(errorHandler)
 
-const PORT = parseInt(env.PORT)
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : parseInt(env.PORT) || 3000
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port:${PORT}`)
