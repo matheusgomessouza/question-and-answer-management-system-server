@@ -1,4 +1,4 @@
-import { prisma } from '../../lib/prisma'
+import { prisma } from '../../lib/prisma.js'
 import { Answer, UUID } from '@/models/types.js'
 import { CreateAnswerInput, UpdateAnswerInput } from '@/validators/answerSchemas.js'
 import { AppError } from '@/middleware/errorHandler.js'

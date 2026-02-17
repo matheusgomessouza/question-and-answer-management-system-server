@@ -1,7 +1,7 @@
-import { prisma } from '../../lib/prisma'
+import { prisma } from '../../lib/prisma.js'
 import { Question, UUID } from '@/models/types.js'
 import { AppError } from '@/middleware/errorHandler.js'
-import { CreateQuestionInput, UpdateQuestionInput } from '@/validators/questionSchemas'
+import { CreateQuestionInput, UpdateQuestionInput } from '@/validators/questionSchemas.js'
 
 function isPrismaNotFoundError(err: unknown): err is { code?: string } {
   return typeof err === 'object' && err !== null && 'code' in err && (err as any).code === 'P2025'
