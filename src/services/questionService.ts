@@ -9,7 +9,8 @@ export class QuestionService {
       const questionsRepo = new QuestionsRepository()
       return await questionsRepo.getAll()
     } catch (error) {
-      throw new AppError('Error retrieving questions', 500)
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      throw new AppError('Error retrieving questions:' + 'description:' + errorMessage, 500)
     }
   }
 
@@ -21,7 +22,8 @@ export class QuestionService {
       if (error instanceof AppError && error.statusCode === 404) {
         throw error
       }
-      throw new AppError('Error retrieving question', 500)
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      throw new AppError('Error retrieving question: ' + errorMessage, 500)
     }
   }
 
@@ -30,7 +32,8 @@ export class QuestionService {
       const questionsRepo = new QuestionsRepository()
       return await questionsRepo.create(data)
     } catch (error) {
-      throw new AppError('Error creating question', 500)
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      throw new AppError('Error creating question: ' + errorMessage, 500)
     }
   }
 
@@ -42,7 +45,8 @@ export class QuestionService {
       if (error instanceof AppError && error.statusCode === 404) {
         throw error
       }
-      throw new AppError('Error updating question', 500)
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      throw new AppError('Error updating question: ' + errorMessage, 500)
     }
   }
 
@@ -54,7 +58,8 @@ export class QuestionService {
       if (error instanceof AppError && error.statusCode === 404) {
         throw error
       }
-      throw new AppError('Error deleting question', 500)
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      throw new AppError('Error deleting question: ' + errorMessage, 500)
     }
   }
 }
