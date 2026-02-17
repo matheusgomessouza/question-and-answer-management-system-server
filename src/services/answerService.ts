@@ -1,4 +1,4 @@
-import { AppError } from '@/middleware/errorHandler'
+import { AppError } from '@/middleware/errorHandler.js'
 import { Answer, UUID } from '@/models/types'
 import { AnswersRepository } from '@/repositories/answers-repository.js'
 import { CreateAnswerInput, UpdateAnswerInput } from '@/validators/answerSchemas'
