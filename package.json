@@ -9,6 +9,8 @@
     "prisma:generate": "prisma generate",
     "build": "prisma generate && tsc && tsc-alias",
     "start": "node dist/src/server.js",
+    "postinstall": "prisma generate",
+    "prisma:migrate:deploy": "prisma migrate deploy",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "lint": "eslint . --ext .ts",
@@ -26,7 +28,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@prisma/adapter-pg": "^7.4.0",
     "@prisma/client": "^7.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",

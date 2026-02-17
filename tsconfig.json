@@ -31,6 +31,6 @@
       "@/utils/*": ["./src/utils/*"]
     }
   },
-  "include": ["src/**/*", "lib", "generated/**/*", "prisma/**/*"],
-  "exclude": ["node_modules", "dist", "tests"]
+  "include": ["src/**/*", "lib", "prisma/**/*"],
+  "exclude": ["node_modules", "dist", "tests", "generated"]
 }
