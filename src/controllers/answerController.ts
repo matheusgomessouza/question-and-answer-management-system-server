@@ -1,59 +1,60 @@
 import { Request, Response, NextFunction } from 'express'
-import { answerService } from '../services/answerService.js'
-import {
-  createAnswerSchema,
-  updateAnswerSchema,
-  answerIdParamSchema,
-} from '../validators/answerSchemas.js'
+import { AnswerService } from '../services/answerService.js'
+import { createAnswerSchema, updateAnswerSchema } from '../validators/answerSchemas.js'
 
-export const answerController = {
-  async getAll(_req: Request, res: Response, next: NextFunction) {
+export class AnswerController {
+  async getAll(_: Request, res: Response, next: NextFunction) {
     try {
-      const answers = await answerService.getAll()
-      res.json({ success: true, data: answers })
+      const service = new AnswerService()
+      const answers = await service.getAll()
+      res.status(200).json(answers)
     } catch (error) {
       next(error)
     }
-  },
+  }
 
   async getById(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = answerIdParamSchema.parse(req.params)
-      const answer = await answerService.getById(id)
-      res.json({ success: true, data: answer })
+      const { id } = req.params
+      const service = new AnswerService()
+      const answer = await service.getById(id)
+      res.status(200).json(answer)
     } catch (error) {
       next(error)
     }
-  },
+  }
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
       const data = createAnswerSchema.parse(req.body)
-      const answer = await answerService.create(data)
-      res.status(201).json({ success: true, data: answer })
+      const service = new AnswerService()
+      const newAnswer = await service.create(data)
+      res.status(201).json(newAnswer)
     } catch (error) {
       next(error)
     }
-  },
+  }
 
   async update(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = answerIdParamSchema.parse(req.params)
+      const { id } = req.params
       const data = updateAnswerSchema.parse(req.body)
-      const answer = await answerService.update(id, data)
-      res.json({ success: true, data: answer })
+      const service = new AnswerService()
+      const updatedAnswer = await service.update(id, data)
+      res.status(200).json(updatedAnswer)
     } catch (error) {
       next(error)
     }
-  },
+  }
 
   async delete(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = answerIdParamSchema.parse(req.params)
-      await answerService.delete(id)
-      res.json({ success: true, message: 'Answer deleted successfully' })
+      const { id } = req.params
+      const service = new AnswerService()
+      await service.delete(id)
+      res.status(204).send()
     } catch (error) {
       next(error)
     }
-  },
+  }
 }

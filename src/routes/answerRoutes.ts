@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { answerController } from '../controllers/answerController.js'
+import { AnswerController } from '../controllers/answerController.js'
 
 const router = Router()
-
+const answerController = new AnswerController()
 /**
  * @swagger
  * components:
