@@ -12,10 +12,4 @@ export interface Question {
   description: string
   active: boolean
   order: number
-  answerIds: UUID[]
-}
-
-export interface DatabaseSchema {
-  answers: Answer[]
-  questions: Question[]
 }

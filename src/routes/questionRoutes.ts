@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { questionController } from '../controllers/questionController.js'
+import { QuestionController } from '../controllers/questionController.js'
 
 const router = Router()
-
+const questionController = new QuestionController()
 /**
  * @swagger
  * components:
@@ -26,18 +26,16 @@ const router = Router()
  *         order:
  *           type: number
  *           description: Display order
- *         answerIds:
+ *         answers:
  *           type: array
+ *           description: Associated answers
  *           items:
- *             type: string
- *             format: uuid
- *           description: Array of associated answer IDs
+ *             $ref: '#/components/schemas/Answer'
  *       example:
  *         id: "123e4567-e89b-12d3-a456-426614174000"
  *         description: "Do you agree?"
  *         active: true
  *         order: 1
- *         answerIds: ["223e4567-e89b-12d3-a456-426614174000"]
  *     QuestionInput:
  *       type: object
  *       required:
@@ -57,18 +55,6 @@ const router = Router()
  *           items:
  *             type: string
  *             format: uuid
- *           default: []
- *     AssociateAnswers:
- *       type: object
- *       required:
- *         - answerIds
- *       properties:
- *         answerIds:
- *           type: array
- *           items:
- *             type: string
- *             format: uuid
- *           description: Array of answer IDs to associate
  */
 
 /**
@@ -227,47 +213,5 @@ router.put('/:id', questionController.update)
  *               $ref: '#/components/schemas/Error'
  */
 router.delete('/:id', questionController.delete)
-
-/**
- * @swagger
- * /api/questions/{id}/answers:
- *   post:
- *     summary: Associate answers with a question
- *     tags: [Questions]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *           format: uuid
- *         description: Question ID
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/AssociateAnswers'
- *     responses:
- *       200:
- *         description: Answers associated successfully
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Question'
- *       404:
- *         description: Question not found
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *       400:
- *         description: Invalid input
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- */
-router.post('/:id/answers', questionController.associateAnswers)
 
 export default router
