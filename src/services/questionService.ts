@@ -10,7 +10,7 @@ export class QuestionService {
       return await questionsRepo.getAll()
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error'
-      throw new AppError('Error retrieving questions:' + 'description:' + errorMessage, 500)
+      throw new AppError('Error retrieving questions: ' + errorMessage, 500)
     }
   }
 
