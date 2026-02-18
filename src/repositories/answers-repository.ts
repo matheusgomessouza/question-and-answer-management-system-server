@@ -33,10 +33,32 @@ export class AnswersRepository {
     if (!updated) {
       throw new AppError('Answer not found', 404)
     }
+
+    if (data.active === false) {
+      const questions = await prisma.question.findMany({
+        where: { answers: { some: { id } } },
+        select: { id: true },
+      })
+
+      await Promise.all(
+        questions.map((q: { id: string }) =>
+          prisma.question.update({
+            where: { id: q.id },
+            data: { answers: { disconnect: { id } } },
+          })
+        )
+      )
+    }
+
     return updated
   }
 
   async delete(id: UUID): Promise<void> {
+    const answer = await prisma.answer.findUnique({ where: { id } })
+    if (!answer) {
+      throw new AppError('Answer not found', 404)
+    }
+
     const questions = await prisma.question.findMany({
       where: { answers: { some: { id } } },
       select: { id: true },
@@ -51,10 +73,6 @@ export class AnswersRepository {
       )
     )
 
-    const deleted = await prisma.answer.delete({ where: { id } })
-
-    if (!deleted) {
-      throw new AppError('Answer not found', 404)
-    }
+    await prisma.answer.delete({ where: { id } })
   }
 }
