@@ -38,6 +38,16 @@ export class QuestionsRepository {
       throw new AppError('A question with this order already exists', 409)
     }
 
+    if (answerIds.length > 0) {
+      const inactiveAnswers = await prisma.answer.findMany({
+        where: { id: { in: answerIds }, active: false },
+      })
+
+      if (inactiveAnswers.length > 0) {
+        throw new AppError('Cannot associate inactive answers with a question', 400)
+      }
+    }
+
     return prisma.question.create({
       data: {
         ...questionData,
@@ -50,6 +60,17 @@ export class QuestionsRepository {
   async update(id: UUID, data: UpdateQuestionInput): Promise<Question> {
     try {
       const { answerIds, ...questionData } = data
+
+      if (answerIds !== undefined && answerIds.length > 0) {
+        const inactiveAnswers = await prisma.answer.findMany({
+          where: { id: { in: answerIds }, active: false },
+        })
+
+        if (inactiveAnswers.length > 0) {
+          throw new AppError('Cannot associate inactive answers with a question', 400)
+        }
+      }
+
       const updated = await prisma.question.update({
         where: { id },
         data: {
