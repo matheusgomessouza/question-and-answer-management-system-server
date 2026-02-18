@@ -17,6 +17,14 @@ export class AnswersRepository {
   }
 
   async create(data: CreateAnswerInput): Promise<Answer> {
+    const existingAnswer = await prisma.answer.findFirst({
+      where: { order: data.order },
+    })
+
+    if (existingAnswer) {
+      throw new AppError('An answer with this order already exists', 409)
+    }
+
     return prisma.answer.create({ data })
   }
 

@@ -29,6 +29,15 @@ export class QuestionsRepository {
 
   async create(data: CreateQuestionInput): Promise<Question> {
     const { answerIds = [], ...questionData } = data
+
+    const existingQuestion = await prisma.question.findFirst({
+      where: { order: questionData.order },
+    })
+
+    if (existingQuestion) {
+      throw new AppError('A question with this order already exists', 409)
+    }
+
     return prisma.question.create({
       data: {
         ...questionData,
