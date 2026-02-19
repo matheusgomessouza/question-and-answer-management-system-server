@@ -61,7 +61,28 @@ export class QuestionsRepository {
     try {
       const { answerIds, ...questionData } = data
 
-      if (answerIds !== undefined && answerIds.length > 0) {
+      const currentQuestion = await prisma.question.findUnique({
+        where: { id },
+      })
+
+      if (!currentQuestion) {
+        throw new AppError('Question not found', 404)
+      }
+
+      if (!currentQuestion.active) {
+        const isOnlyActivating =
+          Object.keys(questionData).length === 1 && questionData.active === true
+        const hasAnswerIds = answerIds !== undefined && answerIds.length > 0
+
+        if (!isOnlyActivating || hasAnswerIds) {
+          throw new AppError(
+            'Inactive questions can only be activated. Other fields, including description, order, and answers, cannot be modified.',
+            400
+          )
+        }
+      }
+
+      if (currentQuestion.active && answerIds !== undefined && answerIds.length > 0) {
         const inactiveAnswers = await prisma.answer.findMany({
           where: { id: { in: answerIds }, active: false },
         })
