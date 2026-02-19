@@ -76,7 +76,7 @@ export class QuestionsRepository {
 
         if (!isOnlyActivating || hasAnswerIds) {
           throw new AppError(
-            'Inactive questions can only be activated. Cannot modify name or answers.',
+            'Inactive questions can only be activated. Other fields, including description, order, and answers, cannot be modified.',
             400
           )
         }
