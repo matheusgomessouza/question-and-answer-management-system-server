@@ -80,7 +80,7 @@ npm run test:coverage
 - **Node.js 18+** - Runtime
 - **Express 4** - Web Framework
 - **TypeScript 5** - Type Safety
-- **Lowdb 7** - JSON Database
+- **PrismaORM + PostgreSQL** - ORM + Database
 - **Zod 3** - Schema Validation
 - **Vitest** - Testing Framework
 - **UUID** - ID Generation
